@@ -530,12 +530,12 @@ export function CodigosWorkspace({ embedded = false }: CodigosPageProps) {
             )}
 
             {!isSpecialNetflixFlow && meta && visibleItems.length === 0 && !loading && !error && (
-              <div className={styles.emptyState}>No se encontraron correos para ese destinatario.</div>
+              <div className={styles.emptyState}>No se encontraron correos para ese destinatario. Vuelve a intentarlo en unos minutos</div>
             )}
 
             {!hasSearched && !error && isSpecialNetflixFlow && (
               <div className={styles.idleHint}>
-                Este correo especial usa Telegram. Elige una de las 4 opciones para consultar el ultimo mensaje del bot.
+                Elige una de las opciones: 
               </div>
             )}
 
