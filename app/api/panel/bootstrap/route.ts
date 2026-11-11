@@ -1,0 +1,38 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { unstable_noStore as noStore } from 'next/cache'
+import { PanelApiError, requirePanelSession } from '@/lib/panel-auth'
+import { fetchPanelBootstrap } from '@/lib/panel-data'
+
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+
+export async function GET(request: NextRequest) {
+  noStore()
+
+  try {
+    const session = await requirePanelSession(request)
+    const payload = await fetchPanelBootstrap(session.supabaseAdmin, session.profile)
+    return NextResponse.json(payload, {
+      headers: {
+        'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+        Pragma: 'no-cache',
+        Expires: '0',
+      },
+    })
+  } catch (error) {
+    const status = error instanceof PanelApiError ? error.status : 500
+    return NextResponse.json(
+      {
+        error: error instanceof Error ? error.message : 'No se pudo cargar el panel.',
+      },
+      {
+        status,
+        headers: {
+          'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
+          Pragma: 'no-cache',
+          Expires: '0',
+        },
+      }
+    )
+  }
+}
