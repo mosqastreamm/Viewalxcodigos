@@ -4,7 +4,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'AlexCryx',
-  description: 'Administrador premium para clientes y cuentas del panel AlexCryx.',
+  description: 'Administrador para clientes y cuentas del panel AlexCryx.',
 }
 
 export default function RootLayout({

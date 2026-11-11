@@ -254,7 +254,7 @@ export function CodigosWorkspace({ embedded = false }: CodigosPageProps) {
       selectedPlatform === 'netflix' &&
       (isSpecialNetflixRecipient(recipientValue) || telegramRecipientSet.has(recipientValue.toLowerCase()))
     ) {
-      setError('Este correo usa el flujo especial de Telegram. Elige una opcion.')
+      setError('Este correo tiene una logica diferente, aclara que accion deseas realizar.')
       return
     }
 
@@ -270,7 +270,7 @@ export function CodigosWorkspace({ embedded = false }: CodigosPageProps) {
       const token = session.data.session?.access_token
 
       if (!token) {
-        throw new Error('Debes iniciar sesion para consultar tus correos asignados.')
+        throw new Error('Inicia sesion para solicitar codigo.')
       }
 
       const params = new URLSearchParams({
@@ -350,7 +350,7 @@ export function CodigosWorkspace({ embedded = false }: CodigosPageProps) {
 
       const payload = (await response.json()) as TelegramSpecialResponse
       if (!response.ok || payload.error) {
-        throw new Error(payload.error || 'No se pudo consultar Telegram.')
+        throw new Error(payload.error || 'Error al cargar codigo, contacte con soporte. Tl.')
       }
 
       setTelegramResult(payload)
@@ -370,9 +370,7 @@ export function CodigosWorkspace({ embedded = false }: CodigosPageProps) {
             <div className={styles.heroBlock}>
               <h1>Codigos automaticos</h1>
               <p>
-                Elige la plataforma y luego ingresa el correo destino para ver los ultimos mensajes. Los
-                correos de cambio de cuenta de Netflix se ocultan en cuentas `netflix*`, pero los
-                `@cryxteam.com` tambien pueden mostrarse.
+                Elige la plataforma y luego ingresa el correo.
               </p>
             </div>
 
@@ -457,8 +455,7 @@ export function CodigosWorkspace({ embedded = false }: CodigosPageProps) {
               {isSpecialNetflixFlow ? (
                 <>
                   <div className={styles.specialInfo}>
-                    Este correo usa el flujo especial de Telegram para Netflix. Elige una opcion y el
-                    sistema esperara 15 segundos para devolver el ultimo mensaje nuevo del bot.
+                    Elige una opcion para el correo segun lo que necesites: 
                   </div>
 
                   <div className={styles.specialActionGrid}>

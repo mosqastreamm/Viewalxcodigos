@@ -469,8 +469,8 @@ export default function HomePage() {
 
           <div>
             <div className={styles.brand}>AlexCryx</div>
-            <h1>Administrador premium</h1>
-            <p>Vive la mejor experiencia con las mejores cuentas del mercado.</p>
+            <h1>Administrador de cuentas para clientes</h1>
+            <p>Vive la mejor experiencia con un registro facil y sencillo.</p>
           </div>
         </section>
 
