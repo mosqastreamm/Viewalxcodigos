@@ -439,7 +439,7 @@ export default function HomePage() {
       }
     } catch (submitError) {
       setModalError(
-        submitError instanceof Error ? submitError.message : 'No se pudo completar la accion.'
+        submitError instanceof Error ? submitError.message : 'Vuelve a intentarlo mas tarde.'
       )
     } finally {
       setLoading(false)

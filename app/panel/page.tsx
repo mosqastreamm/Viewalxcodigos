@@ -3395,7 +3395,7 @@ export default function PanelPage() {
 
         <div className={styles.productGrid}>
           {ownerProducts.length === 0 ? (
-            <div className={styles.emptyCard}>Todavia no has creado productos.</div>
+            <div className={styles.emptyCard}>Empieza creando algun producto.</div>
           ) : (
             ownerProducts.map(product => (
               <article key={product.id} className={styles.productCard}>

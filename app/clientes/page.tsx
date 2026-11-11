@@ -127,10 +127,9 @@ export default function ClientesPage() {
       <div className={styles.shell}>
         <section className={styles.hero}>
           <span className={styles.eyebrow}>Netflix clientes</span>
-          <h1>Estoy de viaje / Actualizar hogar</h1>
+          <h1>Ultimo correo</h1>
           <p>
-            Ingresa el correo del cliente para ver el ultimo mensaje valido y abrir su accion
-            correspondiente.
+           Ingresa el correo del cual quieres solicitar codigo.
           </p>
         </section>
 
